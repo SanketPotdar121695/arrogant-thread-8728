@@ -1,12 +1,11 @@
 const express = require('express');
 const cors = require('cors');
-const { connection } = require('./config/database.js');
+const { PORT, connection } = require('./config/db.js');
 const adminRouter = require('./controllers/auth.routes.js');
 const adminUserRoutes = require('./controllers/admin.users.tables.routes.js');
 const adminProductRouter = require('./controllers/admin.products.routes.js');
 const { userRoute } = require('./routes/user.route');
 const { userAuthRoute } = require('./routes/user.auth.route');
-require('dotenv').config();
 
 const app = express();
 
@@ -24,7 +23,6 @@ app.use('/user/auth', userAuthRoute);
 
 app.use('/', userRoute);
 
-const PORT = process.env.port || 8080;
 app.listen(PORT, async () => {
   try {
     await connection;
