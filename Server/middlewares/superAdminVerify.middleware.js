@@ -2,17 +2,20 @@ const jwt = require('jsonwebtoken');
 const { secretKey } = require('../config/db');
 
 const superadminVerify = (req, res, next) => {
-  let token = req.headers.token;
+  let token = req.headers.authorization;
+
   if (token) {
+    token = token.split(' ')[1];
+
     jwt.verify(token, secretKey, (err, decoded) => {
-      if (decoded.role == 'superadmin') {
+      if (decoded.role === 'superadmin') {
         next();
       } else {
-        res.status(400).send({ error: err });
+        return res.status(400).send({ error: err });
       }
     });
   } else {
-    res.status(400).send({ error: 'unauthorized access' });
+    return res.status(400).send({ error: 'unauthorized access' });
   }
 };
 

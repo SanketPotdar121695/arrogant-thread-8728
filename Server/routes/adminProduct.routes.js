@@ -1,54 +1,25 @@
-const ProductModel = require('../models/product.model.js');
 const { Router } = require('express');
+const { auth } = require('../middlewares/auth.middleware.js');
+const {
+  getAdminProducts,
+  addAdminProducts,
+  updateAdminProduct,
+  deleteAdminProduct
+} = require('../controllers/adminProducts.controller.js');
+
+// Setting up the admin products Router
 const adminProductRouter = Router();
-const auth = require('../middlewares/auth.middleware.js');
 
-//get request
-adminProductRouter.get('/products', auth, async (req, res) => {
-  let limit = 10;
-  let page = req.query.page;
-  let skip = (page - 1) * limit;
-  try {
-    let product = await ProductModel.find().skip(skip).limit(limit);
-    res.status(200).send(product);
-  } catch (er) {
-    res.status(400).send({ error: er.message });
-  }
-});
+// GET request for admin products
+adminProductRouter.get('/products', auth, getAdminProducts);
 
-//post request from admin
-adminProductRouter.post('/add', auth, async (req, res) => {
-  let payload = req.body;
-  try {
-    let product = new ProductModel(payload);
-    await product.save();
-    res.status(200).send({ message: 'product added' });
-  } catch (er) {
-    res.status(400).send({ error: er.message });
-  }
-});
+// POST request from admin products
+adminProductRouter.post('/add', auth, addAdminProducts);
 
-//patch request
-adminProductRouter.patch('/product/:id', auth, async (req, res) => {
-  let payload = req.body;
-  let id = req.params.id;
-  try {
-    await ProductModel.findByIdAndUpdate(id, payload);
-    res.status(200).send({ message: 'product updated' });
-  } catch (er) {
-    res.status(400).send({ error: er.message });
-  }
-});
+// PATCH request for admin products
+adminProductRouter.patch('/product/:id', auth, updateAdminProduct);
 
-//delete request
-adminProductRouter.delete('/product/:id', auth, async (req, res) => {
-  let id = req.params.id;
-  try {
-    await ProductModel.findByIdAndDelete(id, payload);
-    res.status(200).send({ message: 'product deleted' });
-  } catch (er) {
-    res.status(400).send({ error: er.message });
-  }
-});
+// DELETE request for admin products
+adminProductRouter.delete('/product/:id', auth, deleteAdminProduct);
 
 module.exports = { adminProductRouter };

@@ -6,22 +6,26 @@ const {
   deleteAdmin,
   addAdmin,
   updateAdmin
-} = require('../controllers/adminUser.controllers');
+} = require('../controllers/adminUsers.controllers');
+const { auth } = require('../middlewares/auth.middleware.js');
+const {
+  superadminVerify
+} = require('../middlewares/superAdminVerify.middleware.js');
 
 // Setting up the admin user Router
-const adminUserRoutes = Router();
+const adminUserRouter = Router();
 
 // GET request to get all ordinary users
-adminUserRoutes.get('/users', auth, getOrdinaryUsers);
+adminUserRouter.get('/users', auth, getOrdinaryUsers);
 
 // GET request to get all admins && superadmins
-adminUserRoutes.get('/admin', auth, getAdmins);
+adminUserRouter.get('/admins', auth, getAdmins);
 
 // DELETE request for deleting an ordinary user
-adminUserRoutes.delete('/user/:id', auth, deleteOrdinaryUser);
+adminUserRouter.delete('/user/:id', auth, deleteOrdinaryUser);
 
 // DELETE request to delete an admin by a super admin
-adminUserRoutes.delete(
+adminUserRouter.delete(
   '/delete/admin/:id',
   auth,
   superadminVerify,
@@ -29,9 +33,9 @@ adminUserRoutes.delete(
 );
 
 // POST request to add a new admin by a super admin
-adminUserRoutes.post('/add/admin', auth, superadminVerify, addAdmin);
+adminUserRouter.post('/add/admin', auth, superadminVerify, addAdmin);
 
 // PATCH request to update an admin credentials by a super admin
-adminUserRoutes.patch('/update/admin/:id', auth, superadminVerify, updateAdmin);
+adminUserRouter.patch('/update/admin/:id', auth, superadminVerify, updateAdmin);
 
-module.exports = { adminUserRoutes };
+module.exports = { adminUserRouter };
