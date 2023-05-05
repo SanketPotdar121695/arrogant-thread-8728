@@ -1,27 +1,22 @@
-const express = require('express');
 const cors = require('cors');
+const express = require('express');
+const { userRouter } = require('./routes/user.routes');
 const { PORT, connection } = require('./config/db.js');
-const adminRouter = require('./controllers/auth.routes.js');
-const adminUserRoutes = require('./controllers/admin.users.tables.routes.js');
-const adminProductRouter = require('./controllers/admin.products.routes.js');
-const { userRoute } = require('./routes/user.route');
-const { userAuthRoute } = require('./routes/user.auth.route');
+const { adminRouter } = require('./routes/admin.routes.js');
+const { userAuthRouter } = require('./routes/userAuth.routes');
+const { adminUserRouter } = require('./routes/adminUser.routes.js');
+const { adminProductRouter } = require('./routes/adminProduct.routes.js');
 
 const app = express();
 
 app.use(cors());
-
 app.use(express.json());
 
+app.use('/', userRouter);
 app.use('/auth', adminRouter);
-
+app.use('/user/auth', userAuthRouter);
+app.use('/adminuser', adminUserRouter);
 app.use('/adminproduct', adminProductRouter);
-
-app.use('/adminuser', adminUserRoutes);
-
-app.use('/user/auth', userAuthRoute);
-
-app.use('/', userRoute);
 
 app.listen(PORT, async () => {
   try {

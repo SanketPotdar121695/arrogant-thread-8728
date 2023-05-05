@@ -13,7 +13,6 @@ const itemSchema = mongoose.Schema(
 
 const orderSchema = mongoose.Schema(
   {
-    userId: { type: String, required: true },
     orderDate: { type: String, required: true },
     paidAmount: { type: Number, required: true },
     paymentMethod: { type: String, required: true },
