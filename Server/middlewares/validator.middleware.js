@@ -21,4 +21,6 @@ const validator = (req, res, next) => {
       .send({ message: 'You are not logged in. Please login.' });
 };
 
+// Validator middleware
+
 module.exports = { validator };
