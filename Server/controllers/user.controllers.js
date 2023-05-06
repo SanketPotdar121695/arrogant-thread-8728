@@ -21,6 +21,7 @@ const signup = async (req, res) => {
       email,
       role: 'user',
       password: hashedPassword
+      
     });
     await newUser.save();
     return res.status(201).json({ message: 'Registration Successful' });

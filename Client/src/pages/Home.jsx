@@ -25,6 +25,7 @@ const Home = () => {
       img1={watch}
       img2={ipad}
       />
+      
       <Banner 
       img1={motherday}
       img2={card}
