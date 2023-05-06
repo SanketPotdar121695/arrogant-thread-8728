@@ -4,7 +4,7 @@ const productSchema = Schema(
   {
     title: { type: String, required: true },
     category: { type: String, required: true },
-    price: { type: [Number], required: true },
+    price: { type: Schema.Types.Mixed, required: true },
     image: { type: String, required: true },
     size: { type: Schema.Types.Mixed, required: true },
     storages: { type: Schema.Types.Mixed, required: true },
