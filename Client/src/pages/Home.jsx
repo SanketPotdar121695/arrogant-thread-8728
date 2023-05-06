@@ -14,7 +14,7 @@ import wwdc from "../assets/wwdc.png"
 const Home = () => {
   return (
     <div>
-        <Navbar/>
+      <Navbar/>
       <Iphone14/>
       <Banner
       img1={tradeIn}
