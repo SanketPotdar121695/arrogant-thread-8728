@@ -5,7 +5,7 @@ const { UserModel } = require('../models/user.model');
 
 const signup = async (req, res) => {
   try {
-    const { firstname, lastname, email, password } = req.body;
+    const { firstname, lastname, email, password,gender } = req.body;
     let userExist = await UserModel.findOne({ email });
     if (userExist) {
       return res.status(409).json({
@@ -20,7 +20,8 @@ const signup = async (req, res) => {
       lastname,
       email,
       role: 'user',
-      password: hashedPassword
+      password: hashedPassword,
+      gender
     });
     await newUser.save();
     return res.status(201).json({ message: 'Registration Successful' });
