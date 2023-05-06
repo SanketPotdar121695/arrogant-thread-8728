@@ -8,9 +8,11 @@ import { Signup } from "./pages/SignUp";
 function App() {
   return (
     <div className="App">
-      {/* <Home/> */}
+      <Home/>/
       {/* <Signup /> */}
-      <Login/>
+      <br />
+      <br />
+      {/* <Login/> */}
     </div>
   );
 }
