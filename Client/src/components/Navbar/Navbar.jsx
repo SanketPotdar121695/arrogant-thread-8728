@@ -369,24 +369,27 @@ export const Navbar = () => {
           <Link className='showDown' to='/store'>
             Store
           </Link>
+          <Link className='showDown' to='/store?category=ipad&_page=1'>
+            iPad
+          </Link>
           <Link className='showDown' to='/store?category=mac&_page=1'>
             Mac
           </Link>
-          <Link className='showDown' to='/store?category=ipad&_page=1'>
-            iPad
+          <Link className='showDown' to='/store?category=iPhone&_page=1'>
+            iPhone
           </Link>
           <Link className='showDown' to='/store?category=watch&_page=1'>
             Watch
           </Link>
-          <Link className='showDown' to='/store?category=airpods&_page=1'>
+          <Link className='showDown' to='/store?category=AirPods&_page=1'>
             AirPods
           </Link>
-          <Link className='showDown' to='/store?category=tv+home&_page=1'>
+          <Link className='showDown' to='/store?category=tv&_page=1'>
             TV & Home
           </Link>
           <Link className='showDown'>Entertainment</Link>
           <Link className='showDown'>Accessories</Link>
-          <Link className='showDown'>Support</Link>
+
           <Link onClick={handleSearch}>
             <i className='fa fa-search'></i>
           </Link>
