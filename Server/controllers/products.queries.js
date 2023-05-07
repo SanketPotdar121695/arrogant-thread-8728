@@ -20,6 +20,9 @@ const getProducts = async (req, res) => {
     const value = parseInt(req.query[key]);
     const [field, operator] = key.split('_');
 
+    // if (field === price) {
+    //   field = 'price[0]';
+    // } else {
     if (operator === 'lte') {
       filters[field] = filters[field] || {};
       filters[field]['$lte'] = value;
@@ -27,6 +30,7 @@ const getProducts = async (req, res) => {
       filters[field] = filters[field] || {};
       filters[field]['$gte'] = value;
     }
+    // }
   });
 
   const sort = {};
