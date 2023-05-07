@@ -20,9 +20,10 @@ const Home = () => {
     <div>
       <Navbar />
       <Iphone14 />
-      <Banner img1={tradeIn} img2={wwdc} />
 
+      <Banner img1={tradeIn} img2={wwdc} />
       <Banner img1={watch} img2={ipad} />
+
       <Banner img1={motherday} img2={card} />
 
       <SimpleSlider />
