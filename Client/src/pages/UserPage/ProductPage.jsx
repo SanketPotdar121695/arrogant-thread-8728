@@ -11,7 +11,10 @@ import Error from '../../components/Error';
 export const ProductPage = () => {
   const dispatch = useDispatch();
   const { products, loading, error } = useSelector((store) => store.products);
-  const location = useLocation()
+
+
+  const location = useLocation();
+
 
   const [searchParams] = useSearchParams();
   const [productPerPage, setProductPerPage] = useState(
@@ -66,15 +69,19 @@ export const ProductPage = () => {
     }
   };
 
-  // const resetFilter =()=>{
-  //   setCategory([]);
-  //   setPrice_gte(undefined);
-  //   setPrice_lte(undefined);
-  // }
+
+  const resetFilter = () => {
+    setCategory([]);
+    setPrice_gte(undefined);
+    setPrice_lte(undefined);
+  };
+
+
   useEffect(() => {
     const allParams = {
       params: {
         category,
+        // model,
         order,
         q,
         sort,
@@ -85,6 +92,36 @@ export const ProductPage = () => {
     // console.log(allParams);
     dispatch(getProducts(allParams));
   }, [category, order, q, sort, price_lte, price_gte]);
+
+  useEffect(() => {
+    let navQuery = searchParams.get('q');
+    if (navQuery !== '' && navQuery !== q) {
+      setQ(navQuery);
+    }
+
+    let navCategory = searchParams.getAll('category');
+    if (
+      navCategory.length &&
+      JSON.stringify(navCategory) !== JSON.stringify(category)
+    ) {
+      setCategory(navCategory);
+    }
+
+    if (navCategory.length === 0 && category.length !== 0) {
+      searchParams.delete('category');
+      setCategory(navCategory);
+    }
+
+    if (navQuery === '' && q !== '') {
+      searchParams.set('q', '');
+      setQ('');
+    }
+
+    let navPage = Number(searchParams.get('_page'));
+    if (navPage !== 0 && navPage !== currentPage) {
+      setCurrentPage(navPage);
+    }
+  }, [location]);
 
   if (loading) return <Loading />;
   if (error) return <Error />;
@@ -97,12 +134,23 @@ export const ProductPage = () => {
       alignContent={'center'}
       gap={4}
     >
-      <Sidebar
-        productCategoryOnchange={changeCategory}
-        price={`${price_gte}, ${price_lte}`}
-        productPriceOnchange={changePrice}
-        category={category}
-      />
+
+      <Box
+        // position={{ base: 'relative', sm: 'fixed' }}
+        position={'relative'}
+        w={{ base: '100%', sm: '50%', lg: '25%' }}
+        left={0}
+        right={0}
+      >
+        <Sidebar
+          productCategoryOnchange={changeCategory}
+          price={`${price_gte}, ${price_lte}`}
+          productPriceOnchange={changePrice}
+          category={category}
+          resetFilter={resetFilter}
+        />
+      </Box>
+
 
       <Grid
         templateColumns={{

@@ -1,11 +1,11 @@
 /** @format */
 
-import axios from "axios";
-import React, { useState } from "react";
+import axios from 'axios';
+import React, { useState } from 'react';
 
 const obj = {
-  email: "",
-  password: ""
+  email: '',
+  password: ''
 };
 
 export const Login = () => {
@@ -25,11 +25,11 @@ export const Login = () => {
     axios
       .post(`https://electro-emporium.cyclic.app/user/auth/login`, formData)
       .then((res) => {
-        localStorage.setItem("token",res.data.token)
-        console.log(res.data)
+        localStorage.setItem('token', res.data.token);
+        localStorage.setItem('role', res.data.role);
+        console.log(res.data);
       })
-      .catch((err)=>console.log(err))
-
+      .catch((err) => console.log(err));
 
     console.log(formData);
     setFormData(obj);
@@ -40,28 +40,27 @@ export const Login = () => {
       <h1>Login page</h1>
 
       <form onSubmit={handleSubmit}>
-      
-        Email:{" "}
+        Email:{' '}
         <input
-          name="email"
+          name='email'
           onChange={handleChange}
           value={formData.email}
-          type="email"
-          placeholder="enter your email"
+          type='email'
+          placeholder='enter your email'
         />
         <br />
         <br />
-        Password:{" "}
+        Password:{' '}
         <input
-          name="password"
+          name='password'
           onChange={handleChange}
           value={formData.password}
-          type="password"
-          placeholder="enter your password"
+          type='password'
+          placeholder='enter your password'
         />
         <br />
         <br />
-        <input type="submit" />
+        <input type='submit' />
       </form>
     </div>
   );

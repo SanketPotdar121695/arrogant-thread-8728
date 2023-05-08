@@ -62,8 +62,10 @@ const Sidebar = ({
       padding='10px'
       spacing='10px'
       color='lf.black'
+
       w={{ base: '100%', sm: '50%', lg: '25%' }}
       position={"sticky"}
+
     >
       <Flex alignItems='center' justifyContent='space-between' gap={2}>
         <Text fontSize={16} fontWeight={400} textAlign={'left'}>
