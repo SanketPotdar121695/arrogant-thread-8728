@@ -7,8 +7,9 @@ function App() {
   return (
 
     <div className="App">
+      <UserRoutes/>
       {/* <Home/> */}
-      <Signup />
+      {/* <ProductPage/> */}
       <br />
       <br />
       {/* <Login/> */}
