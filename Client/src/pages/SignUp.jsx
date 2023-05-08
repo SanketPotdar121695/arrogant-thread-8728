@@ -128,7 +128,7 @@ const obj = {
   password: ""
 };
 
-export function Signup() {
+export default function Signup() {
   const [formData, setFormData] = useState(obj);
 
   const handleChange = (e) => {
