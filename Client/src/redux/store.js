@@ -5,8 +5,11 @@ import {
   legacy_createStore
 } from 'redux';
 import thunk from 'redux-thunk';
+import { productReducer } from './products/productReducer';
 
-const rootReducer = combineReducers({});
+const rootReducer = combineReducers({
+  products: productReducer
+});
 
 const composeEnhancer = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 
