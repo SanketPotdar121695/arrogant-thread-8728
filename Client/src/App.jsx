@@ -1,16 +1,17 @@
-/** @format */
 
-import "./App.css";
-import Home from "./pages/Home";
-import  Login  from "./pages/Login";
-import { Signup } from "./pages/SignUp";
+import './App.css';
+import UserRoutes from './pages/AllRoutes/UserRoutes';
 
 function App() {
   return (
+
     <div className="App">
+      <UserRoutes/>
       {/* <Home/> */}
-      {/* <Signup /> */}
-      <Login/>
+      {/* <ProductPage/> */}
+      <br />
+      <br />
+      {/* <Login/> */}
     </div>
   );
 }
