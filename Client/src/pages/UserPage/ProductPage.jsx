@@ -11,7 +11,10 @@ import Error from '../../components/Error';
 export const ProductPage = () => {
   const dispatch = useDispatch();
   const { products, loading, error } = useSelector((store) => store.products);
+
+
   const location = useLocation();
+
 
   const [searchParams] = useSearchParams();
   const [productPerPage, setProductPerPage] = useState(
@@ -66,11 +69,13 @@ export const ProductPage = () => {
     }
   };
 
+
   const resetFilter = () => {
     setCategory([]);
     setPrice_gte(undefined);
     setPrice_lte(undefined);
   };
+
 
   useEffect(() => {
     const allParams = {
@@ -84,7 +89,7 @@ export const ProductPage = () => {
         price_gte
       }
     };
-    console.log(allParams);
+    // console.log(allParams);
     dispatch(getProducts(allParams));
   }, [category, order, q, sort, price_lte, price_gte]);
 
@@ -121,6 +126,7 @@ export const ProductPage = () => {
   if (loading) return <Loading />;
   if (error) return <Error />;
 
+  console.log(products);
   return (
     <Box
       display={{ base: 'block', sm: 'flex' }}
@@ -128,6 +134,7 @@ export const ProductPage = () => {
       alignContent={'center'}
       gap={4}
     >
+
       <Box
         // position={{ base: 'relative', sm: 'fixed' }}
         position={'relative'}
@@ -143,6 +150,7 @@ export const ProductPage = () => {
           resetFilter={resetFilter}
         />
       </Box>
+
 
       <Grid
         templateColumns={{
