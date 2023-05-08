@@ -21,7 +21,6 @@ const signup = async (req, res) => {
       email,
       role: 'user',
       password: hashedPassword
-      
     });
     await newUser.save();
     return res.status(201).json({ message: 'Registration Successful' });
@@ -52,8 +51,10 @@ const login = async (req, res) => {
               return res.status(500).json({ message: err });
             }
             return res.status(200).json({
-              message: 'Login Successfull',
-              token
+              message: 'Login Successful',
+              token,
+              role,
+              username: `${(firstname, lastname)}`
             });
           }
         );

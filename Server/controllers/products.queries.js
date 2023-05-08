@@ -1,7 +1,7 @@
 const { ProductModel } = require('../models/product.model');
 
 const getProducts = async (req, res) => {
-  const { q, _page, _limit, _sort, _order, category } = req.query;
+  const { q, _page, _limit, _sort, _order, category, model } = req.query;
 
   const filters = {};
 
@@ -14,6 +14,10 @@ const getProducts = async (req, res) => {
 
   if (category) {
     filters.category = { $in: category };
+  }
+
+  if (model) {
+    filters.title = { $in: model };
   }
 
   Object.keys(req.query).forEach((key) => {

@@ -18,7 +18,7 @@ const Home = () => {
 
   return (
     <div>
-      <Navbar />
+      
       <Iphone14 />
 
       <Banner img1={tradeIn} img2={wwdc} />
@@ -27,7 +27,7 @@ const Home = () => {
       <Banner img1={motherday} img2={card} />
 
       <SimpleSlider />
-      <Footer />
+      
     </div>
   );
 };
