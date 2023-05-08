@@ -5,8 +5,13 @@ import { ProductPage } from './pages/UserPage/ProductPage';
 
 function App() {
   return (
-    <div className='App'>
-      <UserRoutes />
+
+    <div className="App">
+      {/* <Home/> */}
+      <Signup />
+      <br />
+      <br />
+      {/* <Login/> */}
     </div>
   );
 }
