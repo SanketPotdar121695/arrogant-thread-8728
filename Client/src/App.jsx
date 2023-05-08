@@ -5,10 +5,9 @@ import { ProductPage } from './pages/UserPage/ProductPage';
 
 function App() {
   return (
-
-    <div className="App">
+    <div className='App'>
+      <UserRoutes />
       {/* <Home/> */}
-      <Signup />
       <br />
       <br />
       {/* <Login/> */}
