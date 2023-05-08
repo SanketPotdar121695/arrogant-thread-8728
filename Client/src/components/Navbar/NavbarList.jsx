@@ -10,16 +10,16 @@ export const NavbarList = () => {
         <Link className='naveLinks' to='/store'>
           Shop the Latest
         </Link>
-        <Link className='naveLinks' to='/store?category=mac&_page=1'>
+        <Link className='naveLinks' to='/store?category=mac'>
           Mac
         </Link>
-        <Link className='naveLinks' to='/store?category=ipad&_page=1'>
+        <Link className='naveLinks' to='/store?category=ipad'>
           iPad
         </Link>
-        <Link className='naveLinks' to='/store?category=iphone&_page=1'>
+        <Link className='naveLinks' to='/store?category=iphone'>
           iPhone
         </Link>
-        <Link className='naveLinks' to='/store?category=tv+watch&_page=1'>
+        <Link className='naveLinks' to='/store?category=tv+watch'>
           Apple Watch
         </Link>
         <Link className='naveLinks' to=''>
@@ -37,7 +37,7 @@ export const NavbarList = () => {
           Order Status
         </Link>
         <Link className='naveLinks'>Financing</Link>
-        <Link className='naveLinks' to='/store?category=iphone&_page=1'>
+        <Link className='naveLinks' to='/store?category=iphone'>
           Apple Trade In
         </Link>
       </div>
