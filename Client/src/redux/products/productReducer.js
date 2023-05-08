@@ -24,6 +24,7 @@ export const productReducer = (state = initState, { type, payload }) => {
 
     case types.GET_PRDUCT_FAILURE:
       return {
+        ...state,
         loading: false,
         error: true
       };

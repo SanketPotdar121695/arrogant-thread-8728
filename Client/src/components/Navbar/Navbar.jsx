@@ -317,6 +317,7 @@ import './Navbar.css';
 import { Link, useNavigate } from 'react-router-dom';
 import $ from 'jquery';
 import { NavbarList } from './NavbarList';
+import logo from "../../assets/logo.png"
 
 export const Navbar = () => {
   const [select, setSelect] = useState('');
@@ -357,34 +358,54 @@ export const Navbar = () => {
     $('.headerDropDown').toggleClass('active');
   }
 
+  const handleClick=()=>{
+    window.location.reload();
+  }
+
   return (
     <>
       <header className='header'>
         <div className='Navham'></div>
         <div className='icons'>
-          <Link className='naveLinks' to='/'>
+          <Link className='naveLinks' to='/'
+           onClick={handleClick}
+          >
             {/* <i className="fa fa-bolt"></i> */}
-            <img className='nav_logo' src='logo' alt='logo' />
+            <img className='nav_logo' src={logo} alt='logo' />
           </Link>
-          <Link className='showDown' to='/store'>
+          <Link className='showDown' to='/store'
+           onClick={handleClick}
+          >
             Store
           </Link>
-          <Link className='showDown' to='/store?category=ipad&_page=1'>
+          <Link className='showDown' to='/store?category=ipad&_page=1'
+           onClick={handleClick}
+          >
             iPad
           </Link>
-          <Link className='showDown' to='/store?category=mac&_page=1'>
+          <Link className='showDown' to='/store?category=mac&_page=1'
+           onClick={handleClick}
+          >
             Mac
           </Link>
-          <Link className='showDown' to='/store?category=iPhone&_page=1'>
+          <Link className='showDown' to='/store?category=iPhone&_page=1'
+           onClick={handleClick}
+          >
             iPhone
           </Link>
-          <Link className='showDown' to='/store?category=watch&_page=1'>
+          <Link className='showDown' to='/store?category=watch&_page=1'
+           onClick={handleClick}
+          >
             Watch
           </Link>
-          <Link className='showDown' to='/store?category=AirPods&_page=1'>
+          <Link className='showDown' to='/store?category=AirPods&_page=1'
+           onClick={handleClick}
+          >
             AirPods
           </Link>
-          <Link className='showDown' to='/store?category=tv&_page=1'>
+          <Link className='showDown' to='/store?category=tv&_page=1'
+           onClick={handleClick}
+          >
             TV & Home
           </Link>
           <Link className='showDown'>Entertainment</Link>
