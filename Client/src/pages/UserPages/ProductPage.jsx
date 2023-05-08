@@ -2,19 +2,17 @@ import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useLocation, useSearchParams } from 'react-router-dom';
 import { getProducts } from '../../redux/products/productAction';
-import Sidebar from './Sidebar';
+import Sidebar from '../../components/Products/Sidebar';
 import { Box, Grid } from '@chakra-ui/react';
 import ProductCard from '../../components/Products/ProductCard';
-import Loading from '../../components/Loading';
-import Error from '../../components/Error';
+import Loading from '../../utils/Loading';
+import Error from '../../utils/Error';
 
 export const ProductPage = () => {
   const dispatch = useDispatch();
   const { products, loading, error } = useSelector((store) => store.products);
 
-
   const location = useLocation();
-
 
   const [searchParams] = useSearchParams();
   const [productPerPage, setProductPerPage] = useState(
@@ -69,13 +67,11 @@ export const ProductPage = () => {
     }
   };
 
-
   const resetFilter = () => {
     setCategory([]);
     setPrice_gte(undefined);
     setPrice_lte(undefined);
   };
-
 
   useEffect(() => {
     const allParams = {
@@ -126,7 +122,6 @@ export const ProductPage = () => {
   if (loading) return <Loading />;
   if (error) return <Error />;
 
-  console.log(products);
   return (
     <Box
       display={{ base: 'block', sm: 'flex' }}
@@ -134,7 +129,6 @@ export const ProductPage = () => {
       alignContent={'center'}
       gap={4}
     >
-
       <Box
         // position={{ base: 'relative', sm: 'fixed' }}
         position={'relative'}
@@ -150,7 +144,6 @@ export const ProductPage = () => {
           resetFilter={resetFilter}
         />
       </Box>
-
 
       <Grid
         templateColumns={{

@@ -1,11 +1,11 @@
-import React from "react";
-import { Link } from "react-router-dom";
-import "./Footer.css"
+import React from 'react';
+import { Link } from 'react-router-dom';
+import './Footer.css';
 
 export const Footer = () => {
   return (
     <footer>
-      <div className="footerTop">
+      <div className='footerTop'>
         <p>
           1. Trade-in values will vary based on the condition, year, and
           configuration of your eligible trade-in device. Not all devices are
@@ -24,24 +24,23 @@ export const Footer = () => {
           trade-in partner for trade-in and recycling of eligible devices.
           Restrictions and limitations may apply.
         </p>
-    
 
         <p>
           2. Compared to AirPods Pro (1st generation). To listen to music on
           Apple Music Classical, you must have an internet connection. To access
           and use all the features of Apple Card, you must add Apple Card to
           Wallet on an iPhone or iPad with the latest version of iOS or iPadOS.
-          Update to the latest version by going to Settings  General  Software
+          Update to the latest version by going to Settings General Software
           Update. Tap Download and Install. Available for qualifying applicants
           in the United States. Apple Card is issued by Goldman Sachs Bank USA,
           Salt Lake City Branch. Learn more about how Apple Card applications
           are evaluated at support.apple.com/kb/HT209218.
         </p>
       </div>
-      <div className="footerTerms">
-        <div className="footerCard">
+      <div className='footerTerms'>
+        <div className='footerCard'>
           <h1>Shop and Learn</h1>
-          <p>
+          <div>
             <Link>Store</Link>
             <Link>Mac</Link>
             <Link>iPad</Link>
@@ -57,11 +56,11 @@ export const Footer = () => {
             <Link>Apple Card</Link>
             <Link>Apple Pay</Link>
             <Link>Apple Cash</Link>
-          </p>
+          </div>
         </div>
-        <div className="footerCard">
+        <div className='footerCard'>
           <h1>Account</h1>
-          <p>
+          <div>
             <Link>Manage Your Apple ID</Link>
             <Link>Apple Store Account</Link>
             <Link>iCloud.com</Link>
@@ -75,11 +74,11 @@ export const Footer = () => {
             <Link>Apple Podcasts</Link>
             <Link>Apple Books</Link>
             <Link>App Store</Link>
-          </p>
+          </div>
         </div>
-        <div className="footerCard">
+        <div className='footerCard'>
           <h1>Apple Store</h1>
-          <p>
+          <div>
             <Link>Find a Store</Link>
             <Link>Genius Bar</Link>
             <Link>Today at Apple</Link>
@@ -91,11 +90,11 @@ export const Footer = () => {
             <Link>Carrier Deals at Apple</Link>
             <Link>Order Status</Link>
             <Link>Shopping Help</Link>
-          </p>
+          </div>
         </div>
-        <div className="footerCard">
+        <div className='footerCard'>
           <h1>For Business</h1>
-          <p>
+          <div>
             <Link>Apple and Business</Link>
             <Link>Shop for Business</Link>
             <h3>For Education</h3>
@@ -109,11 +108,11 @@ export const Footer = () => {
             <h3>For Government</h3>
             <Link>Shop for Government</Link>
             <Link>Shop for Veterans and Military</Link>
-          </p>
+          </div>
         </div>
-        <div className="footerCard">
+        <div className='footerCard'>
           <h1>Apple Values</h1>
-          <p>
+          <div>
             <Link>Accessibility</Link>
             <Link>Education</Link>
             <Link>Environment</Link>
@@ -121,9 +120,7 @@ export const Footer = () => {
             <Link>Privacy</Link>
             <Link>Racial Equity and Justice</Link>
             <Link>Supplier Responsibility</Link>
-
             <h3>About Apple</h3>
-
             <Link>Newsroom</Link>
             <Link>Apple Leadership</Link>
             <Link>Career Opportunities</Link>
@@ -131,7 +128,7 @@ export const Footer = () => {
             <Link>Ethics & Compliance</Link>
             <Link>Events</Link>
             <Link>Contact Apple</Link>
-          </p>
+          </div>
         </div>
       </div>
     </footer>

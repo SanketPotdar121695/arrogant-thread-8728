@@ -1,7 +1,7 @@
 import { Text, Image, Heading, GridItem } from '@chakra-ui/react';
 import React from 'react';
 
-const ProductCard = ({ title, image, price }) => {
+const ProductCard = ({ _id, title, image, price }) => {
   const actualPrice = Array.isArray(price[0]) ? price[0][0] : price[0];
   return (
     <GridItem

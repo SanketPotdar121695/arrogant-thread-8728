@@ -65,7 +65,7 @@ header {
     align-items: center;
   }
   header > .icons > a:first-child > img {
-    width: 25px;
+    width: 40px;
   }
   header > .icons > a {
     text-decoration: none;

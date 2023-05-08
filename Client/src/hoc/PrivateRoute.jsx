@@ -1,14 +1,15 @@
 import React from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useSelector } from 'react-redux';
+import { useLocation, Navigate } from 'react-router-dom';
 
 const PrivateRoute = ({ children }) => {
-  let navigate = useNavigate();
-  let isAuth = localStorage.getItem('role');
+  const location = useLocation();
+  const { isAuth, role } = useSelector((store) => store.authReducer);
 
-  if (isAuth) {
-    if (isAuth === 'admin' || isAuth === 'superadmin') {
-      return navigate('/admin');
-    } else return navigate('/');
+  if (!isAuth) {
+    return <Navigate to='/login' replace state={{ data: location.pathname }} />;
+  } else if (role !== 'user') {
+    return <Navigate to='/admin' />;
   }
   return children;
 };
