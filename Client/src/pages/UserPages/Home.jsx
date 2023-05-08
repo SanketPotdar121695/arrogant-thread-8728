@@ -8,11 +8,25 @@ import motherday from '../../assets/motherday.png';
 import tradeIn from '../../assets/tradeIn.png';
 import watch from '../../assets/watch.png';
 import wwdc from '../../assets/wwdc.png';
+import Loading from '../../utils/Loading';
 
 const Home = () => {
-  // React.useEffect(() => {
-  //   let timeoutID = setTimeout(())
-  // });
+  const [loadingState, setLoadingState] = React.useState(true);
+
+  React.useEffect(() => {
+    let timeoutID = setTimeout(() => {
+      setLoadingState(false);
+    }, 2000);
+
+    const cleanup = () => {
+      clearTimeout(timeoutID);
+    };
+    return cleanup;
+  }, [loadingState]);
+
+  if (loadingState) {
+    return <Loading />;
+  }
 
   return (
     <div>
