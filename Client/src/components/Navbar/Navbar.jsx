@@ -318,7 +318,7 @@ import { Link, NavLink } from 'react-router-dom';
 import $ from 'jquery';
 import { NavbarList } from './NavbarList';
 import logo from '../../assets/logo.png';
-import { Button, Menu, MenuButton, Text } from '@chakra-ui/react';
+import { Button, Menu, MenuButton, MenuList, Text } from '@chakra-ui/react';
 import { logout } from '../../redux/LoginReducer/authAction';
 import { useDispatch, useSelector } from 'react-redux';
 

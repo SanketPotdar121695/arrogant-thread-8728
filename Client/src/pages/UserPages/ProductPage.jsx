@@ -86,6 +86,8 @@ export const ProductPage = () => {
     }
   });
 
+  console.log(filteredProducts);
+
   useEffect(() => {
     const allParams = {
       params: {

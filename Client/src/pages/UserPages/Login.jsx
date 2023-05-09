@@ -19,7 +19,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import React, { useEffect, useState } from 'react';
 import { ToastExample } from '../../assets/ToastExample';
 import { login } from '../../redux/LoginReducer/authAction';
-import { NavLink, useLocation } from 'react-router-dom';
+import { NavLink, useLocation, Navigate } from 'react-router-dom';
 
 const obj = {
   email: '',
