@@ -11,7 +11,9 @@ import Pagination from '../../components/Products/Pagination';
 
 export const ProductPage = () => {
   const dispatch = useDispatch();
-  const { products, loading, error } = useSelector((store) => store.products);
+  const { products, loading, error, totalProductCount } = useSelector(
+    (store) => store.products
+  );
   const [activePage, setActivePage] = useState(1);
 
   const location = useLocation();
@@ -85,7 +87,7 @@ export const ProductPage = () => {
   //   }
   // });
 
-  // console.log(filteredProducts);
+  console.log(totalProductCount);
 
   useEffect(() => {
     const allParams = {
@@ -97,7 +99,7 @@ export const ProductPage = () => {
         sort,
         price_lte,
         price_gte,
-        _page: currentPage,
+        _page: currentPage > 1 ? currentPage : 1,
         _limit: productPerPage
       }
     };
@@ -188,10 +190,11 @@ export const ProductPage = () => {
       </Box>
 
       <Pagination
-        perPage={productPerPage}
-        activePage={currentPage}
-        handlePageChange={paginate}
-        productsLength={products?.length}
+        onChange={paginate}
+        totalCount={totalProductCount}
+        currentPage={currentPage}
+        pageSize={productPerPage}
+        onPageChange={paginate}
       />
     </Box>
   );

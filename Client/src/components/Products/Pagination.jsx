@@ -1,35 +1,80 @@
 import React from 'react';
-import { Box, Button, Flex } from '@chakra-ui/react';
+import { usePagination, DOTS } from '../../hookes/usePagination';
+import { Button, Flex, Square } from '@chakra-ui/react';
 
 const Pagination = ({
-  perPage,
-  activePage,
-  productsLength,
-  handlePageChange
+  onPageChange,
+  totalCount,
+  siblingCount = 1,
+  currentPage,
+  pageSize
 }) => {
-  const totalPages = Math.ceil(productsLength / perPage);
+  const paginationRange = usePagination({
+    currentPage,
+    totalCount,
+    siblingCount,
+    pageSize
+  });
+
+  if (currentPage === 0 || paginationRange.length < 2) {
+    return null;
+  }
+
+  const onNext = () => {
+    onPageChange(currentPage + 1);
+  };
+
+  const onPrevious = () => {
+    onPageChange(currentPage - 1);
+  };
+
+  let lastPage = paginationRange[paginationRange.length - 1];
 
   return (
-    <Flex justifyContent='center' alignItems='center' gap='4' p='6'>
-      {activePage !== 1 ? (
-        <Button onClick={() => handlePageChange(activePage - 1)}>Prev</Button>
-      ) : (
-        <Box px='8' py='4' />
-      )}
-      {[...Array(totalPages)].map((item, index) => (
-        <Button
-          key={index}
-          onClick={() => handlePageChange(index + 1)}
-          colorScheme={activePage === index + 1 ? 'cyan' : 'gray'}
-        >
-          {index + 1}
-        </Button>
-      ))}
-      {activePage !== totalPages ? (
-        <Button onClick={() => handlePageChange(activePage + 1)}>Next</Button>
-      ) : (
-        <Box px='8' py='4' />
-      )}
+    <Flex
+      gap='10px'
+      alignItems='center'
+      justifyContent='center'
+      flexWrap='wrap'
+    >
+      <Button
+        color='lf.black'
+        colorScheme='teal'
+        isDisabled={currentPage === 1}
+        onClick={onPrevious}
+      >
+        Previous
+      </Button>
+      {paginationRange.map((pageNumber) => {
+        if (pageNumber === DOTS) {
+          return (
+            <Square key={`${pageNumber}${Math.random()}${Date.now()}`}>
+              &#8230;
+            </Square>
+          );
+        }
+
+        return (
+          <Square
+            key={`${pageNumber}${Math.random()}${Date.now()}`}
+            padding='5px 15px'
+            cursor='pointer'
+            bgColor={currentPage === pageNumber ? 'teal.500' : 'white'}
+            color={currentPage === pageNumber ? 'white' : 'teal.500'}
+            onClick={() => onPageChange(Number(pageNumber))}
+          >
+            {pageNumber}
+          </Square>
+        );
+      })}
+      <Button
+        color='lf.black'
+        colorScheme='teal'
+        isDisabled={currentPage === lastPage}
+        onClick={onNext}
+      >
+        Next
+      </Button>
     </Flex>
   );
 };

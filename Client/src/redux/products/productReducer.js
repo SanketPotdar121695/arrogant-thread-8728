@@ -4,7 +4,8 @@ import * as types from './productType';
 let initState = {
   products: [],
   loading: false,
-  error: false
+  error: false,
+  totalProductCount: 0
 };
 
 export const productReducer = (state = initState, { type, payload }) => {
@@ -18,7 +19,8 @@ export const productReducer = (state = initState, { type, payload }) => {
     case types.GET_PRDUCT_SUCCESS:
       return {
         ...state,
-        products: payload,
+        products: payload.data,
+        totalProductCount: payload.totalProductCount,
         loading: false
       };
 
