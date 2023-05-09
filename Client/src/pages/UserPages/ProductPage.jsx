@@ -13,13 +13,12 @@ export const ProductPage = () => {
   const dispatch = useDispatch();
   const { products, loading, error } = useSelector((store) => store.products);
   const [activePage, setActivePage] = useState(1);
-  const limit = 6;
 
   const location = useLocation();
 
   const [searchParams] = useSearchParams();
   const [productPerPage, setProductPerPage] = useState(
-    Number(searchParams.get('_limit')) || 10
+    Number(searchParams.get('_limit')) || 6
   );
   const [currentPage, setCurrentPage] = useState(
     Number(searchParams.get('_page')) || 1
@@ -76,17 +75,17 @@ export const ProductPage = () => {
     setPrice_lte(undefined);
   };
 
-  const filteredProducts = products.filter((item, index) => {
-    if (activePage === Math.ceil(products.length / limit)) {
-      return index === activePage * limit - limit;
-    } else {
-      return (
-        index === activePage * limit - limit || index === activePage * limit - 1
-      );
-    }
-  });
+  // const filteredProducts = products.filter((item, index) => {
+  //   if (activePage === Math.ceil(products.length / limit)) {
+  //     return index === activePage * limit - limit;
+  //   } else {
+  //     return (
+  //       index === activePage * limit - limit || index === activePage * limit - 1
+  //     );
+  //   }
+  // });
 
-  console.log(filteredProducts);
+  // console.log(filteredProducts);
 
   useEffect(() => {
     const allParams = {
@@ -97,12 +96,23 @@ export const ProductPage = () => {
         q,
         sort,
         price_lte,
-        price_gte
+        price_gte,
+        _page: currentPage,
+        _limit: productPerPage
       }
     };
     // console.log(allParams);
     dispatch(getProducts(allParams));
-  }, [category, order, q, sort, price_lte, price_gte]);
+  }, [
+    category,
+    order,
+    q,
+    sort,
+    price_lte,
+    price_gte,
+    currentPage,
+    productPerPage
+  ]);
 
   useEffect(() => {
     let navQuery = searchParams.get('q');
@@ -171,16 +181,16 @@ export const ProductPage = () => {
           columnGap={3}
           rowGap={12}
         >
-          {filteredProducts?.map((item, i) => (
+          {products?.map((item, i) => (
             <ProductCard key={item._id} {...item} />
           ))}
         </Grid>
       </Box>
 
       <Pagination
-        perPage={limit}
-        activePage={activePage}
-        handlePageChange={setActivePage}
+        perPage={productPerPage}
+        activePage={currentPage}
+        handlePageChange={paginate}
         productsLength={products?.length}
       />
     </Box>

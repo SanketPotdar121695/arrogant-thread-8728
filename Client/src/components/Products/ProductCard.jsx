@@ -1,8 +1,10 @@
 import { Text, Image, Heading, GridItem } from '@chakra-ui/react';
 import React from 'react';
+import { useNavigate } from 'react-router-dom';
 
 const ProductCard = ({ _id, title, image, price }) => {
   const actualPrice = Array.isArray(price[0]) ? price[0][0] : price[0];
+  const navigate = useNavigate();
   return (
     <GridItem
       p={4}
@@ -12,7 +14,9 @@ const ProductCard = ({ _id, title, image, price }) => {
       rounded='xl'
       borderWidth='1px'
       transition='0.4s ease-in-out'
+      cursor='pointer'
       _hover={{ transform: 'scale(1.04)' }}
+      onClick={() => navigate(`/store/${_id}`)}
     >
       <Image
         src={image}

@@ -47,6 +47,7 @@ const Sidebar = ({
   /********** determine if we can use clear filter button ******************/
 
   useEffect(() => {
+
     if (category.length === 0 && price === 'undefined, undefined') {
       setCanClear(true);
     } else {
