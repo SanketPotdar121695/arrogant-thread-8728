@@ -23,7 +23,7 @@ const UserRoutes = () => {
       <Routes>
         <Route path='/' element={<Home />} />
         <Route path='/store' element={<ProductPage />} />
-        <Route path='/store/:productID' element={<SingleProductPage />} />
+        <Route path='/store/:id' element={<SingleProductPage />} />
         <Route
           path='/bag'
           element={
