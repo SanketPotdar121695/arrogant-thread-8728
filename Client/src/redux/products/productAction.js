@@ -6,8 +6,13 @@ const baseURL = process.env.REACT_APP_baseURL;
 export const getProducts = (allParams) => async (dispatch) => {
   dispatch({ type: types.GET_PRDUCT_REQUEST });
   try {
-    let { data } = await axios.get(`${baseURL}/products`, allParams);
-    dispatch({ type: types.GET_PRDUCT_SUCCESS, payload: data });
+    let res = await axios.get(`${baseURL}/products`, allParams);
+    const totalProductCount = res.headers['x-total-count'];
+    console.log(res);
+    dispatch({
+      type: types.GET_PRDUCT_SUCCESS,
+      payload: { data: res.data, totalProductCount }
+    });
   } catch (err) {
     dispatch({ type: types.GET_PRDUCT_FAILURE });
   }
