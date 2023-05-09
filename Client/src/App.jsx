@@ -1,17 +1,13 @@
-
+import { useSelector } from 'react-redux';
 import './App.css';
 import UserRoutes from './pages/AllRoutes/UserRoutes';
 
 function App() {
-  return (
+  const { isAuth, role } = useSelector((store) => store.authReducer);
 
-    <div className="App">
-      <UserRoutes/>
-      {/* <Home/> */}
-      {/* <ProductPage/> */}
-      <br />
-      <br />
-      {/* <Login/> */}
+  return (
+    <div className='App'>
+      {isAuth && role !== 'user' ? <AdminRoutes /> : <UserRoutes />}
     </div>
   );
 }

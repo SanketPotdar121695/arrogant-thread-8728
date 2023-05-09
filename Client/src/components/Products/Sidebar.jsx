@@ -23,7 +23,7 @@ const Sidebar = ({
   category,
   productPriceOnchange,
   price,
-  // resetFilter
+  resetFilter
 }) => {
   const [canClear, setCanClear] = useState(true);
 
@@ -40,7 +40,7 @@ const Sidebar = ({
     if (category.length !== 0 || price !== 'undefined,undefined') {
       productCategoryOnchange([]);
       productPriceOnchange('*');
-      // resetFilter();
+      resetFilter();
     }
   };
 
@@ -55,17 +55,13 @@ const Sidebar = ({
   }, [category.length, price]);
 
   return (
-
     <Stack
-    t={0}
+      t={0}
       bgColor='white'
       padding='10px'
       spacing='10px'
       color='lf.black'
-
-      w={{ base: '100%', sm: '50%', lg: '25%' }}
-      position={"sticky"}
-
+      w={'100%'}
     >
       <Flex alignItems='center' justifyContent='space-between' gap={2}>
         <Text fontSize={16} fontWeight={400} textAlign={'left'}>

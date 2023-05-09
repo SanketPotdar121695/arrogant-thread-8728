@@ -314,14 +314,19 @@
 
 import React, { useState } from 'react';
 import './Navbar.css';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link, NavLink } from 'react-router-dom';
 import $ from 'jquery';
 import { NavbarList } from './NavbarList';
-import logo from "../../assets/logo.png"
+import logo from '../../assets/logo.png';
+import { Button, Menu, MenuButton, Text } from '@chakra-ui/react';
+import { logout } from '../../redux/LoginReducer/authAction';
+import { useDispatch, useSelector } from 'react-redux';
 
 export const Navbar = () => {
   const [select, setSelect] = useState('');
-  const navigate = useNavigate();
+
+  const dispatch = useDispatch();
+  const { isAuth, username } = useSelector((store) => store.authReducer);
 
   $(document).on('mouseover', '.showDown,.headerDropDown', function () {
     $('.headerDropDown').addClass('active');
@@ -358,60 +363,42 @@ export const Navbar = () => {
     $('.headerDropDown').toggleClass('active');
   }
 
-  const handleClick=()=>{
-    window.location.reload();
-  }
-
   return (
     <>
       <header className='header'>
         <div className='Navham'></div>
         <div className='icons'>
-          <Link className='naveLinks' to='/'
-           onClick={handleClick}
-          >
+          <Link className='naveLinks' to='/'>
             {/* <i className="fa fa-bolt"></i> */}
             <img className='nav_logo' src={logo} alt='logo' />
           </Link>
-          <Link className='showDown' to='/store'
-           onClick={handleClick}
-          >
+          <Link className='showDown' to='/store'>
             Store
           </Link>
-          <Link className='showDown' to='/store?category=ipad&_page=1'
-           onClick={handleClick}
-          >
+          <Link className='showDown' to='/store?category=ipad'>
             iPad
           </Link>
-          <Link className='showDown' to='/store?category=mac&_page=1'
-           onClick={handleClick}
-          >
+          <Link className='showDown' to='/store?category=mac'>
             Mac
           </Link>
-          <Link className='showDown' to='/store?category=iPhone&_page=1'
-           onClick={handleClick}
-          >
+          <Link className='showDown' to='/store?category=iPhone'>
             iPhone
           </Link>
-          <Link className='showDown' to='/store?category=watch&_page=1'
-           onClick={handleClick}
-          >
+          <Link className='showDown' to='/store?category=watch'>
             Watch
           </Link>
-          <Link className='showDown' to='/store?category=AirPods&_page=1'
-           onClick={handleClick}
-          >
+          <Link className='showDown' to='/store?category=AirPods'>
             AirPods
           </Link>
-          <Link className='showDown' to='/store?category=tv&_page=1'
-           onClick={handleClick}
-          >
-            TV & Home
+          <Link className='showDown' to='/store?category=tv'>
+            <Text display={'inline'} noOfLines={1}>
+              TV & Home
+            </Text>
           </Link>
           <Link className='showDown'>Entertainment</Link>
           <Link className='showDown'>Accessories</Link>
 
-          <Link onClick={handleSearch}>
+          <Link to='/bag' onClick={handleSearch}>
             <i className='fa fa-search'></i>
           </Link>
           <Link onClick={handleSelect}>
@@ -424,6 +411,39 @@ export const Navbar = () => {
               <path d='m13.4575 16.9268h-1.1353a3.8394 3.8394 0 0 0 -7.6444 0h-1.1353a2.6032 2.6032 0 0 0 -2.6 2.6v8.9232a2.6032 2.6032 0 0 0 2.6 2.6h9.915a2.6032 2.6032 0 0 0 2.6-2.6v-8.9231a2.6032 2.6032 0 0 0 -2.6-2.6001zm-4.9575-2.2768a2.658 2.658 0 0 1 2.6221 2.2764h-5.2442a2.658 2.658 0 0 1 2.6221-2.2764zm6.3574 13.8a1.4014 1.4014 0 0 1 -1.4 1.4h-9.9149a1.4014 1.4014 0 0 1 -1.4-1.4v-8.9231a1.4014 1.4014 0 0 1 1.4-1.4h9.915a1.4014 1.4014 0 0 1 1.4 1.4z'></path>
             </svg>
           </Link>
+
+          {!isAuth ? (
+            <NavLink to='/login'>
+              <Button size={'sm'} colorScheme={'messenger'}>
+                Signup/Login
+              </Button>
+            </NavLink>
+          ) : (
+            <Menu>
+              <MenuButton as={Button}>
+                <Text noOfLines={1}>
+                  Welcome{' '}
+                  <Text
+                    display={'inline'}
+                    _hover={{
+                      color: 'blue.500',
+                      textDecoration: 'underline'
+                    }}
+                  >
+                    {username}
+                  </Text>
+                </Text>
+              </MenuButton>
+              <MenuList>
+                <Button
+                  colorScheme={'messenger'}
+                  onClick={() => dispatch(logout())}
+                >
+                  Log out
+                </Button>
+              </MenuList>
+            </Menu>
+          )}
         </div>
       </header>
 

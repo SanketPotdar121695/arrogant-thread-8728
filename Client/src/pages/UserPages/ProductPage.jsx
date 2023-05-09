@@ -2,19 +2,20 @@ import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useLocation, useSearchParams } from 'react-router-dom';
 import { getProducts } from '../../redux/products/productAction';
-import Sidebar from './Sidebar';
+import Sidebar from '../../components/Products/Sidebar';
 import { Box, Grid } from '@chakra-ui/react';
 import ProductCard from '../../components/Products/ProductCard';
-import Loading from '../../components/Loading';
-import Error from '../../components/Error';
+import Loading from '../../utils/Loading';
+import Error from '../../utils/Error';
+import Pagination from '../../components/Products/Pagination';
 
 export const ProductPage = () => {
   const dispatch = useDispatch();
   const { products, loading, error } = useSelector((store) => store.products);
-
+  const [activePage, setActivePage] = useState(1);
+  const limit = 6;
 
   const location = useLocation();
-
 
   const [searchParams] = useSearchParams();
   const [productPerPage, setProductPerPage] = useState(
@@ -69,13 +70,21 @@ export const ProductPage = () => {
     }
   };
 
-
   const resetFilter = () => {
     setCategory([]);
     setPrice_gte(undefined);
     setPrice_lte(undefined);
   };
 
+  const filteredProducts = products.filter((item, index) => {
+    if (activePage === Math.ceil(products.length / limit)) {
+      return index === activePage * limit - limit;
+    } else {
+      return (
+        index === activePage * limit - limit || index === activePage * limit - 1
+      );
+    }
+  });
 
   useEffect(() => {
     const allParams = {
@@ -126,46 +135,52 @@ export const ProductPage = () => {
   if (loading) return <Loading />;
   if (error) return <Error />;
 
-  console.log(products);
   return (
-    <Box
-      display={{ base: 'block', sm: 'flex' }}
-      justifyContent='space-between'
-      alignContent={'center'}
-      gap={4}
-    >
-
+    <Box>
       <Box
-        // position={{ base: 'relative', sm: 'fixed' }}
-        position={'relative'}
-        w={{ base: '100%', sm: '50%', lg: '25%' }}
-        left={0}
-        right={0}
+        display={{ base: 'block', sm: 'flex' }}
+        justifyContent='space-between'
+        alignContent={'center'}
+        gap={4}
       >
-        <Sidebar
-          productCategoryOnchange={changeCategory}
-          price={`${price_gte}, ${price_lte}`}
-          productPriceOnchange={changePrice}
-          category={category}
-          resetFilter={resetFilter}
-        />
+        <Box
+          // position={{ base: 'relative', sm: 'fixed' }}
+          position={'relative'}
+          w={{ base: '100%', sm: '50%', lg: '25%' }}
+          left={0}
+          right={0}
+        >
+          <Sidebar
+            productCategoryOnchange={changeCategory}
+            price={`${price_gte}, ${price_lte}`}
+            productPriceOnchange={changePrice}
+            category={category}
+            resetFilter={resetFilter}
+          />
+        </Box>
+
+        <Grid
+          templateColumns={{
+            base: 'repeat(2, 1fr)',
+            md: 'repeat(3, 1fr)'
+          }}
+          justifyContent={'center'}
+          alignItems={'center'}
+          columnGap={3}
+          rowGap={12}
+        >
+          {filteredProducts?.map((item, i) => (
+            <ProductCard key={item._id} {...item} />
+          ))}
+        </Grid>
       </Box>
 
-
-      <Grid
-        templateColumns={{
-          base: 'repeat(2, 1fr)',
-          md: 'repeat(3, 1fr)'
-        }}
-        justifyContent={'center'}
-        alignItems={'center'}
-        columnGap={3}
-        rowGap={12}
-      >
-        {products?.map((item, i) => (
-          <ProductCard key={item._id} {...item} />
-        ))}
-      </Grid>
+      <Pagination
+        perPage={limit}
+        activePage={activePage}
+        handlePageChange={setActivePage}
+        productsLength={products?.length}
+      />
     </Box>
   );
 };

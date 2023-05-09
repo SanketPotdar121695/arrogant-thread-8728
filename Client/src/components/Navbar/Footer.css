@@ -44,7 +44,7 @@ footer {
     font-weight: 500;
     /* border: 1px solid black; */
   }
-  footer > .footerTerms > .footerCard > p {
+  footer > .footerTerms > .footerCard > div {
     /* width: 50%; */
     font-size: 12px;
     display: flex;
@@ -54,15 +54,15 @@ footer {
     line-height: 15px;
     /* border: 1px solid black; */
   }
-  footer > .footerTerms > .footerCard > p a {
+  footer > .footerTerms > .footerCard > div a {
     text-decoration: none;
     color: #2d2d2d;
   }
-  footer > .footerTerms > .footerCard > p a:hover {
+  footer > .footerTerms > .footerCard > div a:hover {
     text-decoration: underline;
   }
   
-  footer > .footerTerms > .footerCard > p h3 {
+  footer > .footerTerms > .footerCard > div h3 {
     font-size: 12px;
     font-weight: 500;
   }
