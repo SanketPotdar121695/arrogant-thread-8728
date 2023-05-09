@@ -22,8 +22,7 @@ const obj = {
   email: "",
   password: "",
 };
-
-export default function Login() {
+export function Login() {
   const [formData, setFormData] = useState(obj);
 
 
