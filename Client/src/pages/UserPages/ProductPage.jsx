@@ -87,7 +87,7 @@ export const ProductPage = () => {
   //   }
   // });
 
-  console.log(totalProductCount);
+  // console.log(totalProductCount);
 
   useEffect(() => {
     const allParams = {
@@ -103,7 +103,7 @@ export const ProductPage = () => {
         // _limit: productPerPage
       }
     };
-    console.log(allParams);
+    // console.log(allParams);
     dispatch(getProducts(allParams));
   }, [
     category,

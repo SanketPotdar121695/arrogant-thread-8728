@@ -32,7 +32,7 @@ export default function Login() {
   const comingFrom = location.state?.data || '/';
 
   const dispatch = useDispatch();
-  const { isAuth, isError, isLoading, token, role } = useSelector(
+  const { isAuth, isError, isLoading, role } = useSelector(
     (store) => store.authReducer
   );
 
@@ -52,6 +52,8 @@ export default function Login() {
     // console.log(formData);
     setFormData(obj);
   };
+
+  // console.log(isAuth, role);
   if (isAuth) return <Navigate to={comingFrom} replace />;
 
   return isLoading ? (

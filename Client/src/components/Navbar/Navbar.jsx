@@ -313,7 +313,7 @@
 // ];
 
 import React, { useEffect, useState } from 'react';
-import './Navbar.css';
+import '../../styles/Navbar.css';
 import { Link, NavLink } from 'react-router-dom';
 import $ from 'jquery';
 import { NavbarList } from './NavbarList';
@@ -374,7 +374,7 @@ export const Navbar = () => {
     dispatch(logout());
   };
 
-  console.log(isAuth);
+  // console.log(isAuth);
 
   return (
     <>
