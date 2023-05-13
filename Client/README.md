@@ -1,70 +1,134 @@
-# Getting Started with Create React App
+# ElectroEmporium
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Welcome to ElectroEmporium, an e-commerce platform that allows you to easily browse and purchase a wide range of digital devices & gadgets. Whether you're looking to connect with your friends on just tapping on your the wrist or to have some fun with ultra-graphics video games, ElectroEmporium has everything you need to make your space feel like your own.
 
-## Available Scripts
+Our user-friendly interface makes it easy to browse and shop for products, and with our powerful search and filtering tools, you can quickly and easily find the perfect items to suit your style and budget. With ElectroEmporium, you can update your life by connecting with the latest smart devices & gadgets.
 
-In the project directory, you can run:
+## Table of Contents
 
-### `npm start`
+- [A Collaborative Project](#a-collaborative-project)
+- [Description](#description)
+- [Tech Stack](#tech-stack)
+- [Features](#features)
+- [Installation](#installation)
+- [Usage](#usage)
+- [Screenshots](#screenshots)
+- [Demo](#demo)
+- [Team](#team)
+- [Disclaimer](#disclaimer)
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+## A Collaborative Project
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+This project is a re-creation of the website "https://www.apple.com/" for educational purposes only. It is a collaborative effort developed by a team of individuals who aim to learn and practice web development skills. We developed this project to enhance our knowledge in building a complete e-commerce web application as a team, where we learn about the best practices for working in a collaborative environment, project management, and problem-solving.
 
-### `npm test`
+## Description
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+ElectroEmporium is an online platform that allows users to browse and purchase the latest smart devices and gadgets to ease your day-to-day life. It has a wide range of devides available in various categories such as Mac (desktops), iPhones, iPads, smart watches, airpods, etc. The platform has a user-friendly interface and provides a variety of customization options for products.
 
-### `npm run build`
+## Tech Stack
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+<h4 align="center">Frontend:</h4>
+<p align="center">
+  <img src="https://img.shields.io/badge/JavaScript-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black" alt="javascript" />
+  <img src="https://img.shields.io/badge/chakra-%234ED1C5.svg?style=for-the-badge&logo=chakraui&logoColor=white" alt="chakraui" />
+  <img src="https://img.shields.io/badge/react-%2320232a.svg?style=for-the-badge&logo=react&logoColor=%2361DAFB" alt="react" />
+  <img src="https://img.shields.io/badge/redux-%23593d88.svg?style=for-the-badge&logo=redux&logoColor=white" alt="redux"/> 
+</p>
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+<h4 align="center">Backend:</h4>
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+<p align="center">
+  <img src="https://img.shields.io/badge/Node.js-339933?style=for-the-badge&logo=nodedotjs&logoColor=white" alt="nodejs" />
+  <img src="https://img.shields.io/badge/Express.js-000000?style=for-the-badge&logo=express&logoColor=white" alt="expressjs" />
+  <img src="https://img.shields.io/badge/MongoDB-%234ea94b.svg?style=for-the-badge&logo=mongodb&logoColor=white" alt="mongodb" />
+</p>
 
-### `npm run eject`
+<h4 align="center">Deployed On:</h4>
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+<p align="center">
+  <img src="https://img.shields.io/badge/Vercel-000000?style=for-the-badge&logo=vercel&logoColor=white" alt="vercerl">
+</p>
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+## Features
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+- Browse and purchase smart devices of various categories
+- Filter and search for products to find the perfect items
+- User-friendly interface
+- Easy checkout and payment options
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+## Installation
 
-## Learn More
+1. Clone the repository
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+```bash
+git clone https://github.com/SanketPotdar121695/arrogant-thread-8728.git
+```
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+2. Install dependencies
 
-### Code Splitting
+```bash
+npm install
+```
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+3. Start the project
 
-### Analyzing the Bundle Size
+```bash
+npm start
+```
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+## Usage
 
-### Making a Progressive Web App
+1. Create an account and log in
+2. Browse and search for products
+3. Add products to your cart
+4. Proceed to checkout
+5. Enter your shipping and payment information
+6. Complete your purchase
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+## Screenshots
 
-### Advanced Configuration
+<div align="center">
+  <h3>Home Page</h3>
+  <img src="https://github.com/SanketPotdar121695/arrogant-thread-8728/blob/main/Client/src/assets/Screenshot%20(1).png?raw=true" width="800">
+    <img src="https://github.com/SanketPotdar121695/arrogant-thread-8728/blob/main/Client/src/assets/Screenshot%20(2).png?raw=true" width="800">
+    <img src="https://github.com/SanketPotdar121695/arrogant-thread-8728/blob/main/Client/src/assets/Screenshot%20(3).png?raw=true" width="800">
+    <img src="https://github.com/SanketPotdar121695/arrogant-thread-8728/blob/main/Client/src/assets/Screenshot%20(4).png?raw=true" width="800">
+</div>
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+<div align="center">
+  <h3>Store Page</h3>
+  <img src="https://github.com/SanketPotdar121695/arrogant-thread-8728/blob/main/Client/src/assets/Screenshot%20(5).png?raw=true" width="800">
+    <img src="https://github.com/SanketPotdar121695/arrogant-thread-8728/blob/main/Client/src/assets/Screenshot%20(6).png?raw=true" width="800">
+    <img src="https://github.com/SanketPotdar121695/arrogant-thread-8728/blob/main/Client/src/assets/Screenshot%20(7).png?raw=true" width="800">
+    <img src="https://github.com/SanketPotdar121695/arrogant-thread-8728/blob/main/Client/src/assets/Screenshot%20(8).png?raw=true" width="800">
+</div>
 
-### Deployment
+<div align="center">
+  <h3>Product Details Page</h3>
+  <img src="https://github.com/SanketPotdar121695/arrogant-thread-8728/blob/main/Client/src/assets/Screenshot%20(11).png?raw=true" width="800">
+  <img src="https://github.com/SanketPotdar121695/arrogant-thread-8728/blob/main/Client/src/assets/Screenshot%20(12).png?raw=true" width="800">
+</div>
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+<div align="center">
+  <h3>User Registration</h3>
+  <img src="https://github.com/SanketPotdar121695/arrogant-thread-8728/blob/main/Client/src/assets/Screenshot%20(9).png?raw=true" width="800">
+</div>
 
-### `npm run build` fails to minify
+<div align="center">
+  <h3>User Login</h3>
+    <img src="https://github.com/SanketPotdar121695/arrogant-thread-8728/blob/main/Client/src/assets/Screenshot%20(10).png?raw=true" width="800">
+</div>
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+## Demo
+
+Check out the demo <a href="https://electro-emporium.vercel.app/" target="_blank">here</a>
+
+## Team
+
+- [Sanket Potdar](https://github.com/SanketPotdar121695)
+- [Ranjan Yadav](https://github.com/Ranjan095)
+- [Dharmik Goswami](https://github.com/dharmikpuri)
+
+## Disclaimer
+
+This project is a re-creation of the website "https://www.apple.com" for educational purposes only and is not affiliated with or endorsed by the original website or its owners. The project was created solely for the purpose of learning and practicing web development skills and should not be used for any commercial or unauthorized purposes. All rights to the original website.

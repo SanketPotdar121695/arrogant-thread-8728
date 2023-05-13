@@ -152,9 +152,9 @@ export default function Signup() {
       return;
     }
     axios
-      .post(`https://electro-emporium.cyclic.app/user/auth/register`, formData)
+      .post(`${process.env.baseURL}/user/auth/register`, formData)
       .then((res) => {
-        console.log(res.data);
+        // console.log(res.data);
         toast({
           position: 'top',
           title: res.data.message,
@@ -165,7 +165,7 @@ export default function Signup() {
         });
       })
       .catch((err) => {
-        console.log(err.response.data);
+        // console.log(err.response.data);
         toast({
           position: 'top',
           title: 'Account not created',

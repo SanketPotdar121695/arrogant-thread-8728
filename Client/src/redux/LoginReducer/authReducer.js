@@ -27,6 +27,7 @@ export let authReducer = (state = initialstate, { type, payload }) => {
       return { ...state, isLoading: true };
     }
     case GET_LOGIN_SUCCESS: {
+      localStorage.setItem('userData', JSON.stringify(payload));
       return {
         ...state,
         isLoading: false,

@@ -8,6 +8,7 @@ const AdminRoutes = () => {
       <Routes>
         <Route path='/admin' element={<AdminHome />} />
       </Routes>
+      <Route path='*' element={<h1>Page not found!</h1>} />
     </div>
   );
 };

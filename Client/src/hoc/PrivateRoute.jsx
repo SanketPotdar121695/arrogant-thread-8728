@@ -6,12 +6,10 @@ const PrivateRoute = ({ children }) => {
   const location = useLocation();
   const { isAuth, role } = useSelector((store) => store.authReducer);
 
-  console.log(isAuth);
-
   if (!isAuth) {
     return <Navigate to='/login' replace state={{ data: location.pathname }} />;
   } else if (role !== 'user') {
-    return <Navigate to='/admin' />;
+    return <Navigate to='/admin' replace />;
   }
   return children;
 };
