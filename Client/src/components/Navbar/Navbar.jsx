@@ -312,13 +312,20 @@
 
 // ];
 
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import './Navbar.css';
 import { Link, NavLink } from 'react-router-dom';
 import $ from 'jquery';
 import { NavbarList } from './NavbarList';
 import logo from '../../assets/logo.png';
-import { Button, Menu, MenuButton, MenuList, Text } from '@chakra-ui/react';
+import {
+  Box,
+  Button,
+  Menu,
+  MenuButton,
+  MenuList,
+  Text
+} from '@chakra-ui/react';
 import { logout } from '../../redux/LoginReducer/authAction';
 import { useDispatch, useSelector } from 'react-redux';
 
@@ -363,6 +370,12 @@ export const Navbar = () => {
     $('.headerDropDown').toggleClass('active');
   }
 
+  const handleLogout = () => {
+    dispatch(logout());
+  };
+
+  console.log(isAuth);
+
   return (
     <>
       <header className='header'>
@@ -398,10 +411,10 @@ export const Navbar = () => {
           <Link className='showDown'>Entertainment</Link>
           <Link className='showDown'>Accessories</Link>
 
-          <Link to='/bag' onClick={handleSearch}>
+          <Link onClick={handleSearch}>
             <i className='fa fa-search'></i>
           </Link>
-          <Link onClick={handleSelect}>
+          <Link to='/bag'>
             <svg
               height='48'
               viewBox='0 0 17 48'
@@ -421,10 +434,9 @@ export const Navbar = () => {
           ) : (
             <Menu>
               <MenuButton as={Button}>
-                <Text noOfLines={1}>
+                <Box>
                   Welcome{' '}
                   <Text
-                    display={'inline'}
                     _hover={{
                       color: 'blue.500',
                       textDecoration: 'underline'
@@ -432,13 +444,10 @@ export const Navbar = () => {
                   >
                     {username}
                   </Text>
-                </Text>
+                </Box>
               </MenuButton>
               <MenuList>
-                <Button
-                  colorScheme={'messenger'}
-                  onClick={() => dispatch(logout())}
-                >
+                <Button colorScheme={'messenger'} onClick={handleLogout}>
                   Log out
                 </Button>
               </MenuList>

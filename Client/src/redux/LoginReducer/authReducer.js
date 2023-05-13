@@ -27,14 +27,18 @@ export let authReducer = (state = initialstate, { type, payload }) => {
       return { ...state, isLoading: true };
     }
     case GET_LOGIN_SUCCESS: {
-      return { ...state, isLoading: false };
+      return {
+        ...state,
+        isLoading: false,
+        isAuth: role ? true : false
+      };
     }
     case GET_LOGIN_ERROR: {
       return { ...state, isLoading: false, isError: true };
     }
     case LOGOUT_USER: {
       localStorage.removeItem('userData');
-      return state;
+      return { ...state, isAuth: false };
     }
     default: {
       return state;

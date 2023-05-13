@@ -9,7 +9,7 @@ const { adminProductRouter } = require('./routes/adminProduct.routes.js');
 
 const app = express();
 
-app.use(cors({ exposedHeaders: 'x-total-count' }));
+app.use(cors());
 app.use(express.json());
 
 app.use('/', userRouter);
