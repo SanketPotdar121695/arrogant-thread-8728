@@ -49,7 +49,7 @@ export default function Login() {
 
     dispatch(login(formData));
 
-    console.log(formData);
+    // console.log(formData);
     setFormData(obj);
   };
   if (isAuth) return <Navigate to={comingFrom} replace />;

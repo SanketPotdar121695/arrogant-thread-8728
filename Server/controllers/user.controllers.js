@@ -54,7 +54,7 @@ const login = async (req, res) => {
               message: 'Login Successful',
               token,
               role,
-              username: `${(firstname, lastname)}`
+              username: firstname + ' ' + lastname
             });
           }
         );

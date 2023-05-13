@@ -15,7 +15,6 @@ export const login = (formData) => (dispatch) => {
     .then((res) => {
       dispatch({ type: GET_LOGIN_SUCCESS, payload: res.data.token });
       localStorage.setItem('userData', JSON.stringify(res.data));
-      console.log(res.data);
     })
     .catch((err) => {
       dispatch({ type: GET_LOGIN_ERROR });

@@ -98,12 +98,12 @@ export const ProductPage = () => {
         q,
         sort,
         price_lte,
-        price_gte,
-        _page: currentPage > 1 ? currentPage : 1,
-        _limit: productPerPage
+        price_gte
+        // _page: currentPage > 1 ? currentPage : 1,
+        // _limit: productPerPage
       }
     };
-    // console.log(allParams);
+    console.log(allParams);
     dispatch(getProducts(allParams));
   }, [
     category,
@@ -111,9 +111,9 @@ export const ProductPage = () => {
     q,
     sort,
     price_lte,
-    price_gte,
-    currentPage,
-    productPerPage
+    price_gte
+    // currentPage,
+    // productPerPage
   ]);
 
   useEffect(() => {
