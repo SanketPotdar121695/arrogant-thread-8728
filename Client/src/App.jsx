@@ -8,7 +8,11 @@ function App() {
 
   return (
     <div className='App'>
-      {isAuth && role !== 'user' ? <AdminRoutes /> : <UserRoutes />}
+      {isAuth && role.length && role !== 'user' ? (
+        <AdminRoutes />
+      ) : (
+        <UserRoutes />
+      )}
     </div>
   );
 }

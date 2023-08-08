@@ -15,7 +15,7 @@ let { role, username, token } =
 let initialstate = {
   isLoading: false,
   isError: false,
-  isAuth: role ? true : false,
+  isAuth: role?.length ? true : false,
   token: token || '',
   role: role || '',
   username: username || ''
@@ -28,10 +28,15 @@ export let authReducer = (state = initialstate, { type, payload }) => {
     }
     case GET_LOGIN_SUCCESS: {
       localStorage.setItem('userData', JSON.stringify(payload));
+      const { username, role, token } = payload;
+
       return {
         ...state,
         isLoading: false,
-        isAuth: role ? true : false
+        isAuth: true,
+        username,
+        role,
+        token
       };
     }
     case GET_LOGIN_ERROR: {

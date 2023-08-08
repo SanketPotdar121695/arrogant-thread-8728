@@ -32,22 +32,8 @@ const UserRoutes = () => {
             </PrivateRoute>
           }
         />
-        <Route
-          path='/signup'
-          element={
-            // <PrivateRoute>
-            <Signup />
-            // </PrivateRoute>
-          }
-        />
-        <Route
-          path='/login'
-          element={
-            // <PrivateRoute>
-            <Login />
-            // </PrivateRoute>
-          }
-        />
+        <Route path='/signup' element={<Signup />} />
+        <Route path='/login' element={<Login />} />
         <Route path='*' element={<h1>Page not found!</h1>} />
       </Routes>
 

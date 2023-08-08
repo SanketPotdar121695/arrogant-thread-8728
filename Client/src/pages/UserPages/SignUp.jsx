@@ -117,6 +117,7 @@ import axios from 'axios';
 import React, { useState } from 'react';
 import { Navbar } from '../../components/Navbar/Navbar';
 import { Footer } from '../../components/Navbar/Footer';
+import { useNavigate } from 'react-router-dom';
 
 const obj = {
   firstname: '',
@@ -127,6 +128,7 @@ const obj = {
 
 export default function Signup() {
   const [formData, setFormData] = useState(obj);
+  const navigate = useNavigate();
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -152,17 +154,18 @@ export default function Signup() {
       return;
     }
     axios
-      .post(`${process.env.baseURL}/user/auth/register`, formData)
+      .post(`${process.env.REACT_APP_baseURL}/user/auth/register`, formData)
       .then((res) => {
         // console.log(res.data);
         toast({
           position: 'top',
           title: res.data.message,
-          description: "We've created your account for you.",
+          description: "We've created a new account for you.",
           status: 'success',
           duration: 3000,
           isClosable: true
         });
+        return navigate('/login');
       })
       .catch((err) => {
         // console.log(err.response.data);

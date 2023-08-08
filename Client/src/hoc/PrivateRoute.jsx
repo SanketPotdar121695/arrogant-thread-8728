@@ -8,9 +8,7 @@ const PrivateRoute = ({ children }) => {
 
   if (!isAuth) {
     return <Navigate to='/login' replace state={{ data: location.pathname }} />;
-  } else if (role !== 'user') {
-    return <Navigate to='/admin' replace />;
-  }
+  } else if (role !== 'user') return <Navigate to='/admin' replace />;
   return children;
 };
 

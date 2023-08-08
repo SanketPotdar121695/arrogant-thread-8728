@@ -53,8 +53,10 @@ export default function Login() {
     setFormData(obj);
   };
 
-  // console.log(isAuth, role);
-  if (isAuth) return <Navigate to={comingFrom} replace />;
+  if (isAuth) {
+    console.log('Hello');
+    return <Navigate to={comingFrom} replace />;
+  }
 
   return isLoading ? (
     <Spinner
